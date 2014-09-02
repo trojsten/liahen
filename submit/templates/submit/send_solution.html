@@ -1,0 +1,14 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Odovzdaj riešenie</h3>
+    </div>
+    <div class="panel-body">
+        <form enctype="multipart/form-data" method="post" action="#submit" class="form-horizontal">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class = "col-lg-12">
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load widgets %}
+{% block title %}{{ task.title }} (riešenie){% endblock title %}
+
+{% block content %}
+{% if task.is_public|is_false %} <div class = "non-public">{% endif %}
+    {% include 'tasks/task_header.html' %}
+    <div class = "col-lg-7">
+        {{ task.example_solution|safe }}
+    </div>
+{% if task.is_public|is_false %} <div class = "non-public">{% endif %}
+{% endblock content %}

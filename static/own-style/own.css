@@ -1,0 +1,60 @@
+.table td, .table th, .io-table {
+    border: 1px solid #ddd;
+}
+
+.io-table td, .io-table th {
+    border: none;
+}
+
+#cy {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+form td,
+form th,
+#ksp_login_association_list td,
+#ksp_login_association_list th
+{
+     padding: 5px;
+}
+
+form th {
+    vertical-align: top;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 30em;   
+}
+
+.errorlist {
+    list-style-type: none;
+}
+
+.helptext {
+    font-style: italic;
+}
+
+.ksp_login_provider_list {
+    margin: 10px;
+}
+
+.ksp_login_more {
+    padding: 5px;
+    margin: 5px;
+    display: block;
+}
+
+.non-public {
+/*     background: #dddddd; */
+    opacity:0.5;
+    filter:Alpha(opacity=50); /* IE8 and earlier */
+}
+
+.prettyprint {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

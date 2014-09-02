@@ -1,0 +1,24 @@
+<div class = "row">
+{% load widgets %}
+    <ul class="nav nav-tabs">
+        {% for set in sets %}
+            <li {% if task_set == set %} class = "active" {% endif %}><a {% if set.public|is_false %} class = "non-public" {% endif %} href= "{% url 'tasks:set' set.id %}{% if style == 'graph' %}/graph{% endif %}">{{ set.id }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+<h2>
+    <span class="btn-group">
+        <button type="button" class="btn btn-default {% if style == 'graph' %}active{% endif %}" onclick="location.href='{% url 'tasks:set' task_set.id %}/graph';">
+            <span class="glyphicon glyphicon-ok-sign" style = "font-size: 0.7em;"></span>
+            <span class="glyphicon glyphicon-arrow-right" style = "font-size: 0.7em;"></span>
+            <span class="glyphicon glyphicon-question-sign" style = "font-size: 0.7em;"></span>
+        </button>
+        <button type="button" class="btn btn-default {% if style == 'list' %}active{% endif %}" onclick="location.href='{% url 'tasks:set' task_set.id %}';">
+            &nbsp;&nbsp;<span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;
+        </button>
+    </span>
+    {{ task_set.title }}
+</h2>
+<hr />
+<br />
+

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load items_format %}
+{% block content %}
+    <div class = "page-header">
+    <a name="protocol"></a>
+    <h2>Protokol z testovania</h2>
+    </div>
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>Čas</th>
+                    <th>Meno</th>
+                    <th>Úloha</th>
+                    <th>Jazyk</th>
+                    <th>Výsledok</th>
+                    <th>Čas behu</th>
+                    <th>Spotreba pamäte</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ submit.timestamp|timestamp_format }}</td>
+                    <td>{{ submit.user|user_format }}</td>
+                    <td>{{ submit.task|task_format }}</td>
+                    <td>{{ submit.language|language_format }}</td>
+                    <td>{{ submit.message|message_format }}</td>
+                    <td>{{ submit.runtime|runtime_format }}</td>
+                    <td>{{ submit.memory|memory_format }}</td>                    
+                </tr>
+            </tbody>
+        </table>    
+
+<div class = "col-lg-5">
+    <h3>Výsledky testovania:</h3>
+    {% if submit.message == submit.QUEUE %}
+        <p>Testovanie môže pár chvíľ trvať. Občas skús refresh stránky.</p>
+        <div class="progress progress-striped active">
+            <div class="progress-bar" style="width: 100%"></div>
+        </div>
+    {% else %}
+        {{ submit.log|log_format }}
+    {% endif %}
+</div>
+<div class = "col-lg-7">
+    <h3>Odovzdaný program:</h3>
+    <pre class = "prettyprint">{{ source_code }}</pre>
+</div>
+{% endblock content %}

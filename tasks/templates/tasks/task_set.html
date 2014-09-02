@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load widgets %}
+{% block title %}{{ task_set.title }}{% endblock %}
+
+{% block content %}
+{% if task_set.public|is_false %} <div class = "non-public">{% endif %}
+    {% include 'tasks/task_set_header.html' %}
+    <div class = "row">
+        {% for cat in categories %}
+            {% if cat.tasks %}
+                <div class = "col-lg-3">
+                    <div class = "panel 
+                        {% if cat.type == 'act_sub' %}panel-danger
+                        {% elif cat.type == 'act_read' %}panel-primary
+                        {% elif cat.type == 'sol_sub' %}panel-success
+                        {% elif cat.type == 'sol_read' %}panel-info  
+                        {% endif %}">
+                        <div class = "panel-heading">
+                            <h4 class = "panel-title">
+                                {% if cat.type == 'act_sub' %}
+                                    <span class="glyphicon glyphicon-question-sign"></span>&nbsp;Aktuálne úlohy
+                                {% elif cat.type == 'act_read' %}
+                                    <span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Neprečítané texty
+                                {% elif cat.type == 'sol_sub' %}
+                                    <span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Vyriešené úlohy 
+                                {% elif cat.type == 'sol_read' %}
+                                    <span class="glyphicon glyphicon-flag"></span>&nbsp;Prečítané texy
+                                {% endif %} 
+                                ({{ cat.tasks|length }})
+                            </h4>
+                        </div>
+                        <div class = "panel-body">
+                            <table class = "table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        {% if cat.type == 'act_sub' or cat.type == 'sol_sub' %}
+                                            <th>Úloha</th><th>Vyriešilo</th>
+                                        {% elif cat.type == 'act_read' or cat.type == 'sol_read' %}
+                                            <th>Text</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>{% for task in cat.tasks %}
+                                    <tr{% if task.public|is_false %} class = "non-public"{% endif %}>
+                                        <td><a href= "{% url 'tasks:task' task.id %}">{{ task.title }}</a></td>
+                                        {% if cat.type == 'act_sub' or cat.type == 'sol_sub' %}
+                                            <td>{{ task.num_solvers }}</td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}</tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% if task_set.public|is_false %}</div>{% endif %}
+    
+{% endblock content %}

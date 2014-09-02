@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Submity{% endblock title %}
+{% block content %}
+{% load items_format %}
+{% include 'submit/submits_header.html' %}
+{% load tz %}
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        {% if type == 'me' %}
+            <h4 class="panel-title">Všetky moje submity</h4>        
+        {% elif type == 'now' %}
+            <h4 class="panel-title">Najčerstvejšie výsledky z testovača</h4>        
+        {% elif type == 'task' %}
+            <div class = "row" style = "margin-left:0; margin-left:0;" >
+                <div class = "pull-left">
+                    <h4 class="panel-title" style = "padding-top:10px;" >Úspešné submity úlohy <i>{{ cur_task|task_format }}</i></h4>
+                </div>
+                <select id="select-search" onchange = "location = this.options[this.selectedIndex].value;" class="col-lg-4">
+                   {% regroup tasks by task_set as task_list %}
+                        <option value="">Začni písať názov úlohy...</option>
+                   {% for task in task_list %}
+                        <optgroup label="{{ task.grouper }}">
+                            {% for item in task.list %}
+                                <option value="{% url 'submit:task' item.id %}#submits">{{ item.title }} ({{ item.id }})</option>
+                            {% endfor %}
+                        </optgroup>
+                    {% endfor %}                  
+                </select>
+            </div>
+        {% elif type == 'user' %}
+            <h4 class="panel-title">Všetky submity človeka <b>{{ cur_user|user_format }}</b>&nbsp;&nbsp;&nbsp;<i class = "text-muted">(parametre sa menia intuitívne hore v linku)</i></h4>                    
+        {% elif type == 'user_task' %}
+            <h4 class="panel-title">Všetky submity človeka <b>{{ cur_user|user_format }}</b> v úlohe <i>{{ cur_task|task_format }}</i>&nbsp;&nbsp;&nbsp;<i class = "text-muted">(parametre sa menia intuitívne hore v linku)</i> </h4>                 
+        {% endif %}
+    </div>
+    <div class = "panel-body">
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>Čas</th>
+                    <th>Meno</th>
+                    <th>Úloha</th>
+                    <th>Jazyk</th>
+                    <th>Výsledok</th>
+                    <th>Detaily</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for submit in submits %}
+                <tr>
+                    <td>{{ submit.timestamp|timestamp_format }}</td>
+                    <td>{{ submit.user|user_format }}</td>
+                    <td>{{ submit.task|task_format }}</td>
+                    <td>{{ submit.language|language_format }}</td>
+                    <td>{{ submit.message|message_format }}</td>
+                    <td>{% if req_user.is_active and req_user.is_staff or req_user == submit.user %}{{ submit.id|detail_format }}{% endif %}</td>
+                </tr>
+                {% endfor %}                
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content%}

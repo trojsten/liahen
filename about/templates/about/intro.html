@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load webdesign %}
+{% block title %}O Liahni{% endblock title %}
+
+{% block content %}
+    <div class = "row">
+        <div class = "col-lg-8 well">
+                <h2>Čo je Programátorská liaheň?</h2>
+            <p>Programátorská liaheň slúži na výučbu programovania pre začiatočníkov aj tréning pre pokročilých. Si teoretický typ? Alebo skôr praktický? Na svoje si prídu všetci!</p>
+        </div>
+        <div class = "col-lg-1"><br /></div>
+        <div class = "col-lg-2">
+            <br /> 
+            <a class = "btn btn-success col-lg-12" href = "{% url 'account_register' %}">Zaregistruj sa</a>
+            <br /><br /><br />
+                <a class = "btn btn-info col-lg-12" href = "">Demo</a>
+        </div>
+        <div class = "col-lg-1"><br /></div>
+    </div>
+
+    {% include 'about/fancy1.html' %}
+    <br />
+    {% include 'about/prev.html' %}
+    
+    {% include 'about/fancy2.html' %}
+    
+    {% include 'about/demo_alert.html' %}
+    
+    {% include 'about/contact+about_us.html' %}
+    
+    {% include 'about/terms.html' %}
+
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% load items_format %}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">Tvoje submity</h4>
+    </div>
+    <div class = "panel-body">
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>Čas</th>
+                    <th>Jazyk</th>
+                    <th>Výsledok</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for submit in submits %}
+                <tr>
+                    <td>{{ submit.timestamp|timestamp_format }}</td>
+                    <td>{{ submit.language|language_format }}</td>
+                    <td>{{ submit.message|message_format }}</td>
+                </tr>
+                {% endfor %}                
+            </tbody>
+        </table>
+    </div>
+</div>
