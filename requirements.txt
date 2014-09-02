@@ -1,0 +1,19 @@
+Django==1.6
+Markdown==2.4
+South==0.8.4
+argparse==1.2.1
+distribute==0.6.24
+django-extensions==1.3.7
+django-social-auth==0.7.28
+httplib2==0.9
+-e git+https://github.com/koniiiik/ksp_login.git@0e16707c48b79d78e16e43cc83e8fa8ccd6427f6#egg=ksp_login-dev
+oauth2==1.5.211
+oauthlib==0.6.1
+psycopg2==2.5.3
+pygraphviz==1.2
+python-openid==2.2.5
+python-social-auth==0.1.23
+requests==2.3.0
+requests-oauthlib==0.4.0
+six==1.6.1
+wsgiref==0.1.2
