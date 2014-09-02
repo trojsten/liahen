@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if form.errors %}
+        <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            Nesprávne meno alebo heslo.
+        </div>
+    {% endif %}
+    <form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+ 
+        {% csrf_token %}
+        <fieldset>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-3 control-label">Ctené meno</label>
+                <div class="col-lg-9">
+                    <input class="form-control" id="inputEmail" placeholder="Najkrajšie mienko vo vienku" name="username" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-3 control-label">Super trouper tajné heslo</label>
+                <div class="col-lg-9">
+                    <input class="form-control" id="inputPassword" placeholder="Hesielko Masielko Kresielko" name="password" type="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-9">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %} 

@@ -1,0 +1,71 @@
+{% load tz %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        {% load staticfiles %}
+   
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'google-code-prettify/prettify.css' %}" type="text/css"/>  
+        <link rel="stylesheet" href="{% static 'selectize/dist/css/selectize.bootstrap3.css' %}" data-theme="bootstrap3">
+        <link rel="stylesheet" href="{% static 'own-style/own.css' %}" data-theme="bootstrap3">
+        <link rel="stylesheet" href="{{ STATIC_URL }}/ksp_login/css/base.css" type="text/css" />
+        
+        <title>Programátorská liaheň | {% block title %}{% endblock title %}</title>
+
+    </head>
+    <body> 
+        {% include "header.html" %}
+        {% include "menu.html" %}
+        <div class = "container">
+            {% block ksp_login_title %}{% endblock ksp_login_title %}
+            {% block content %}<p>Default content</p>{% endblock content %}
+        </div>
+        {% include "footer.html" %}
+
+        <script src="{% static 'other-js/jquery-1.10.2.min.js' %}"></script>
+        <script src="{% static 'file-input/bootstrap.file-input.js' %}"></script>
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'other-js/bootswatch.js' %}"></script>    
+        <script>$(document).ready(function(){$('input[type=file]').bootstrapFileInput();});</script>
+        
+        <script src = "{% static 'google-code-prettify/prettify.js' %}"></script>
+        <script>
+            !function ($) {
+                $(function(){
+                window.prettyPrint && prettyPrint()
+                })
+            }(window.jQuery)
+        </script>
+        
+        
+        <script type="text/javascript" src="{% static 'selectize/dist/js/standalone/selectize.js' %}"></script>
+        <script>
+            $('#select-search').selectize({
+                sortField: 'text'
+            });
+        </script>
+        
+        {% include "ksp_login/parts/include_javascript.html" %}
+        
+        <script>
+            $('form :input[type=text]').addClass("form-control");
+            $('form :input[type=email]').addClass("form-control");
+            $('form :input[type=password]').addClass("form-control");
+            $('.errorlist').addClass("alert alert-danger");
+            $('.helptext').addClass("text-info");
+        </script>
+        
+        <!--script>
+            function escapeHtml(text) {
+                return text
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+        </script-->
+
+    </body>
+</html>
