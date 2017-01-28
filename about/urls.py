@@ -1,10 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from about import views
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     # home page Liahne
     url(r'^$', views.intro_view, name='intro'),
-)
+]

@@ -1,10 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from tasks import views
 
-
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     # tasks/    (aktualna sada usera)
     url(r'^$', views.task_set_graph_view, name='index'),
     # tasks/set/intro  (konkretna sada ako list)
@@ -15,4 +13,4 @@ urlpatterns = patterns(
     url(r'^(?P<pk>\w+)$', views.task_view, name='task'),
     # tasks/popolvar/ex-sol    (vzorove riesenie ulohy)
     url(r'^(?P<pk>\w+)/ex-sol$', views.example_solution_view, name='example_solution'),
-)
+]

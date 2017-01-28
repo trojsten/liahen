@@ -22,8 +22,6 @@ SECRET_KEY = 'byj&*)ke@eh$h%yufjisihfp&nuwowqa*%x=a6cp_(tq=4$0by'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -35,15 +33,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tasks',
-    'django.contrib.staticfiles',
-    'south',
-    'django.contrib.webdesign',
-    'submit',
-    'ksp_login',
-    'social.apps.django_app.default',
-    'about',
     'django_extensions',
+    'social_django',
+    'ksp_login',
+
+    'about.apps.AboutConfig',
+    'tasks.apps.TasksConfig',
+    'submit.apps.SubmitConfig',
     )
 
 MIDDLEWARE_CLASSES = (
@@ -53,18 +49,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages",
-    "django.core.context_processors.request",
-    "ksp_login.context_processors.login_providers_both",
 )
 
 ROOT_URLCONF = 'page.urls'
@@ -106,35 +90,53 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_out')
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ['templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.request',
+                'ksp_login.context_processors.login_providers_both',
+            ],
+        },
+    },
+]
 
 LOGIN_REDIRECT_URL = '/tasks'
 LOGIN_URL = '/account/login/'
 
 AUTHENTICATION_BACKENDS = (
-#    'social.backends.facebook.FacebookOAuth2',
-    'social.backends.google.GoogleOpenId',
-    'social.backends.github.GithubOAuth2',
+    'social_core.backends.open_id.OpenIdAuth',
     'ksp_login.backends.LaunchpadAuth',
-    'social.backends.open_id.OpenIdAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
 
 AUTHENTICATION_PROVIDERS_BRIEF = 5
 
 SOCIAL_AUTH_PIPELINE = (
-    'social.pipeline.social_auth.social_details',
-    'social.pipeline.social_auth.social_uid',
-    'social.pipeline.social_auth.auth_allowed',
-    'social.pipeline.social_auth.social_user',
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
     'ksp_login.pipeline.register_user',
-    'social.pipeline.social_auth.associate_user',
-    'social.pipeline.social_auth.load_extra_data',
-    'social.pipeline.user.user_details',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'

@@ -1,10 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from submit import views
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     # submits/protocol/2/ (detaily submitu)
     url(r'^protocol/(?P<pk>\d+)/$', views.protocol_view, name='protocol'),
 
@@ -26,4 +25,4 @@ urlpatterns = patterns(
 
     # submits/user/fero/task/popolvar    (vsetky user-ove v ulohe)
     url(r'^user/(?P<user>\w+)/task/(?P<task>\w+)/$', views.judge_view, {'type': 'user_task'}, name='user_task'),
-)
+]

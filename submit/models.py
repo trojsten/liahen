@@ -1,8 +1,6 @@
 # -*- coding: utf8 -*-
 from django.db import models
-from django.contrib.auth.models import User
-
-from tasks.models import Task
+from django.conf import settings
 
 
 class Submit(models.Model):
@@ -46,8 +44,8 @@ class Submit(models.Model):
         ".java": ".java"
     }
 
-    user = models.ForeignKey(User)  # clovek
-    task = models.ForeignKey(Task)  # uloha
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)  # clovek
+    task = models.ForeignKey('tasks.Task')  # uloha
     timestamp = models.DateTimeField(  # cas submitu
         auto_now_add=True
     )
