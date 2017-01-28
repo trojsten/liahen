@@ -1,4 +1,6 @@
 # -*- coding: utf8 -*-
+from __future__ import unicode_literals
+
 from django.db import models
 import submit.models
 from django.contrib.auth.models import User
@@ -28,12 +30,12 @@ class TaskSet(models.Model):
         return True
 
     def __unicode__(self):
-        return u'%s (%s)' % (self.title, self.id)
+        return '%s (%s)' % (self.title, self.id)
 
 
 # uloha; citaci aj submitovatelny typ
 class Task(models.Model):
-    TASK_TEMPLATE = u"""Rozpravka
+    TASK_TEMPLATE = """Rozpravka
 ####Úloha
 
 ####Formát vstupu
@@ -53,11 +55,11 @@ class Task(models.Model):
   </tr>
 </table>"""
 
-    EX_SOL_TEMPLATE = u"""
+    EX_SOL_TEMPLATE = """
 <pre class = "prettyprint">Escape-nuty zdrojak</pre>
 """
 
-    ID_HELP = u"""Nesmie byť zhodné s inou úlohou na Experimente."""
+    ID_HELP = """Nesmie byť zhodné s inou úlohou na Experimente."""
 
     TEXT_HELP = 'Obsah bude prehnaný <a href="http://en.wikipedia.org/wiki/Markdown">Markdownom</a>.'
 
@@ -116,7 +118,7 @@ class Task(models.Model):
     )
 
     def __unicode__(self):
-        return u'%s: %s' % (self.task_set.id, self.id)
+        return '%s: %s' % (self.task_set.id, self.id)
 
     # ak ja som public, ale moja sada nie je
     def _get_is_public(self):
@@ -200,7 +202,7 @@ class Stalker(models.Model):
     )
 
     def __unicode__(self):
-        return u'%s | %s | %s' % (self.user, self.task, self.seen)
+        return '%s | %s | %s' % (self.user, self.task, self.seen)
 
 
 # ktore ulohy a sady su pre ktoreho uzivatela aktivne (= zobrazuju sa defaultne)
@@ -215,4 +217,4 @@ class Active(models.Model):
     # task_set_style = models.CharField(max_length = 1, default = GRAPH, choices = ((GRAPH, 'Graph'),(LIST, 'List')))
 
     def __unicode__(self):
-        return u'%s | %s | %s' % (self.user, self.task_set.id, self.task.id)
+        return '%s | %s | %s' % (self.user, self.task_set.id, self.task.id)
