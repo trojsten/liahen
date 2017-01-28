@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'social_django',
     'ksp_login',
+    'easy_select2',
 
     'about.apps.AboutConfig',
     'tasks.apps.TasksConfig',
