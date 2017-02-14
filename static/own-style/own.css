@@ -1,3 +1,18 @@
+body
+{
+    overflow-x: hidden;
+}
+
+body, h1, h2, h3
+{
+    font-family: 'Titillium Web';
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    color: #001142;
+}
+
 .table td, .table th, .io-table {
     border: 1px solid #ddd;
 }
@@ -57,4 +72,115 @@ input[type="text"], input[type="email"], input[type="password"] {
 .prettyprint {
     margin-top: 16px;
     margin-bottom: 16px;
+}
+
+#l-intro-whatis
+{
+    background: url('../images/intro-bg.jpg');
+    padding: 10rem 0;
+    background-size: cover;
+    font-family: 'Titillium Web';
+}
+
+#l-intro-whatis h2
+{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 5rem;
+    margin: 0;
+    font-family: 'Titillium Web';
+}
+
+.l-inverse-text h1,
+.l-inverse-text h2,
+.l-inverse-text p
+{
+    color: white !important;
+}
+
+#l-intro-whatis .l-button
+{
+    background-color: #0D256E;
+    padding: 2rem 5rem;
+    color: white;
+    text-decoration: none;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.navbar
+{
+    margin-bottom: 0 !important;
+    background: #001142;
+}
+
+.l-slider.l-controls
+{
+    clear: both;
+    text-align: center;
+}
+
+.l-slider.l-controls span
+{
+    padding: 0 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.l-top-gap
+{
+    margin-top: 5rem;
+}
+
+.l-top-gap-small
+{
+    margin-top: 2.5rem;
+}
+
+.l-bottom-gap
+{
+    margin-bottom: 5rem;
+}
+
+.l-bottom-gap-small
+{
+    margin-bottom: 2.5rem;
+}
+
+.dropdown-menu > li > a:hover
+{
+    background-color: #001142;
+}
+
+#l-menu-about-item
+{
+    margin-right: 1rem;
+}
+
+#l-contact-area .l-contact
+{
+    margin-top: 2rem;
+    border-left: 5px solid lightgrey;
+    padding-left: 1rem;
+}
+
+.l-danger-box
+{
+    background-color: red;
+    color: white;
+    padding: 1rem 3rem;
+}
+
+.l-danger-box a:link,
+.l-danger-box a:visited
+{
+    color: white;
+    text-decoration: underline;
+}
+
+.l-img-shadowed
+{
+    display: block;
+    box-shadow: 0 0 10px 5px lightgray;
+    -webkit-box-shadow: 0 0 10px 5px lightgray;
 }

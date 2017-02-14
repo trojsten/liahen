@@ -16,11 +16,20 @@
         <ul class="nav navbar-nav">
             <li {% if active_app == 'tasks' %}class = "active"{% endif %}><a href="{% url 'tasks:index' %}"><span class="glyphicon glyphicon-tasks"></span>&nbsp;Úlohy</a></li>
             <li {% if active_app == 'submit' %}class = "active"{% endif %}><a href="{% url 'submit:index'%}"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Submity</a></li>
-            <li><a href=""><span class="glyphicon glyphicon-certificate"></span>&nbsp;Achievementy</a></li>
         </ul>
         {% include "ksp_login/parts/login_box.html" %}
         <ul class="nav navbar-nav navbar-right">
-            <li><a href = "{% url 'about:intro' %}#contact" ><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Kontakt</a></li>
+            <li id="l-menu-about-item" class="dropdown">
+                <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-question-sign"></span> O Liahni
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'about:about' %}">O Liahni</a></li>
+                    <li><a href="{% url 'about:contact' %}">Kontakt</a></li>
+                    <li><a href="{% url 'about:terms' %}">Podmienky používania</a></li>
+                </ul>
+            </li>
             <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
         </ul>
 
