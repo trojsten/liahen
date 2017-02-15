@@ -1,7 +1,7 @@
 (function(){
 
 	var $slider = $('.l-slider').unslider({
-		delay: 5000,
+		delay: 10 * 1000, // 10 seconds
 		autoplay: true,
 		infinite: true,
         arrows: false
