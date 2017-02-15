@@ -13,9 +13,28 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
+
         <ul class="nav navbar-nav">
-            <li {% if active_app == 'tasks' %}class = "active"{% endif %}><a href="{% url 'tasks:index' %}"><span class="glyphicon glyphicon-tasks"></span>&nbsp;Úlohy</a></li>
-            <li {% if active_app == 'submit' %}class = "active"{% endif %}><a href="{% url 'submit:index'%}"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Submity</a></li>
+
+            {% if user.is_authenticated %}
+            <li {% if active_app == 'tasks' %}class = "active"{% endif %}>
+
+                <a href="{% url 'tasks:index' %}">
+                    <span class="glyphicon glyphicon-tasks"></span>
+                &nbsp;Úlohy</a>
+
+            </li>
+
+            <li {% if active_app == 'submit' and user.is_authenticated %}class = "active"{% endif %}>
+
+                <a href="{% url 'submit:index'%}">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                    &nbsp;Submity
+                </a>
+
+            </li>
+            {% endif %}
+            
         </ul>
         {% include "ksp_login/parts/login_box.html" %}
         <ul class="nav navbar-nav navbar-right">
