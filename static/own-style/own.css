@@ -77,7 +77,8 @@ input[type="text"], input[type="email"], input[type="password"] {
 #l-intro-whatis
 {
     background: url('../images/intro-bg.jpg');
-    padding: 10rem 0;
+    background-attachment: fixed;
+    padding: 0rem 5rem;
     background-size: cover;
     font-family: 'Titillium Web';
 }
@@ -137,6 +138,11 @@ input[type="text"], input[type="email"], input[type="password"] {
     margin-top: 2.5rem;
 }
 
+.l-top-gap-big
+{
+    margin-top: 8rem;
+}
+
 .l-bottom-gap
 {
     margin-bottom: 5rem;
@@ -147,9 +153,9 @@ input[type="text"], input[type="email"], input[type="password"] {
     margin-bottom: 2.5rem;
 }
 
-.dropdown-menu > li > a:hover
+.l-bottom-gap-big
 {
-    background-color: #001142;
+    margin-bottom: 8rem;
 }
 
 #l-menu-about-item
@@ -181,6 +187,46 @@ input[type="text"], input[type="email"], input[type="password"] {
 .l-img-shadowed
 {
     display: block;
-    box-shadow: 0 0 10px 5px lightgray;
-    -webkit-box-shadow: 0 0 10px 5px lightgray;
+
+}
+
+.l-slider .l-text-content
+{
+    padding: 4rem;
+}
+
+#login-dropdown
+{
+    background: #001142;
+    border: none;
+}
+
+.navbar li span.glyphicon
+{
+    display: inline-block;
+    padding-right: 0.33rem;
+}
+
+.navbar li p
+{
+    margin: 0 !important;
+    padding: 15px 12px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.navbar li a
+{
+    color: white !important;
+}
+
+.navbar li a:hover,
+.navbar li p:hover
+{
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dropdown-menu
+{
+    background-color: #001142;
 }
