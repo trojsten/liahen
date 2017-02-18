@@ -5,7 +5,7 @@ body
 
 body, h1, h2, h3
 {
-    font-family: 'Titillium Web';
+    font-family: 'Source Sans Pro';
 }
 
 h1, h2, h3, h4, h5, h6
@@ -90,7 +90,7 @@ input[type="text"], input[type="email"], input[type="password"] {
     background-attachment: fixed;
     padding: 0rem 3rem;
     background-size: cover;
-    font-family: 'Titillium Web';
+    font-family: 'Source Sans Pro';
 }
 
 #l-intro-whatis h2
@@ -99,7 +99,7 @@ input[type="text"], input[type="email"], input[type="password"] {
     font-weight: bold;
     font-size: 5rem;
     margin: 0;
-    font-family: 'Titillium Web';
+    font-family: 'Source Sans Pro';
 }
 
 .l-inverse-text h1,
