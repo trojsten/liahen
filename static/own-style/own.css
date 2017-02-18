@@ -13,6 +13,11 @@ h1, h2, h3, h4, h5, h6
     color: #001142;
 }
 
+p
+{
+    text-align: justify;
+}
+
 .table td, .table th, .io-table {
     border: 1px solid #ddd;
 }
@@ -78,7 +83,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 {
     background: url('../images/intro-bg.jpg');
     background-attachment: fixed;
-    padding: 0rem 5rem;
+    padding: 0rem 3rem;
     background-size: cover;
     font-family: 'Titillium Web';
 }
@@ -102,7 +107,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 #l-intro-whatis .l-button
 {
     background-color: #0D256E;
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     color: white;
     text-decoration: none;
     font-size: 3rem;
@@ -113,6 +118,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 {
     margin-bottom: 0 !important;
     background: #001142;
+    border-bottom: 2px solid black;
 }
 
 .l-slider.l-controls
@@ -229,4 +235,12 @@ input[type="text"], input[type="email"], input[type="password"] {
 .dropdown-menu
 {
     background-color: #001142;
+}
+
+@media screen and (max-width: 768px)
+{
+    #l-intro-whatis h2
+    {
+        font-size: 4rem;
+    }
 }

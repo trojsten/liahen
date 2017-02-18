@@ -1,57 +1,84 @@
 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+
   <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
+
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+
+        <button type="button" class="navbar-toggle"
+            data-toggle="collapse" data-target=".navbar-ex1-collapse">
+
+            <span class="sr-only">Toggle navigation</span>
+
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+
         </button>
+
         <a class="navbar-brand" href="{% url 'about:intro' %}">Programátorská liaheň</a>
+
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
 
         <ul class="nav navbar-nav">
 
             {% if user.is_authenticated %}
-            <li {% if active_app == 'tasks' %}class = "active"{% endif %}>
 
-                <a href="{% url 'tasks:index' %}">
-                    <span class="glyphicon glyphicon-tasks"></span>
-                &nbsp;Úlohy</a>
+                <li {% if active_app == 'tasks' %} class = "active" {% endif %}>
 
-            </li>
+                    <a href="{% url 'tasks:index' %}">
+                        <span class="glyphicon glyphicon-tasks"></span>
+                        &nbsp;Úlohy
+                    </a>
 
-            <li {% if active_app == 'submit' and user.is_authenticated %}class = "active"{% endif %}>
+                </li>
 
-                <a href="{% url 'submit:index'%}">
-                    <span class="glyphicon glyphicon-envelope"></span>
-                    &nbsp;Submity
-                </a>
+                <li {% if active_app == 'submit' %} class = "active"{% endif %}>
 
-            </li>
+                    <a href="{% url 'submit:index'%}">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        &nbsp;Submity
+                    </a>
+
+                </li>
+
             {% endif %}
-            
+
         </ul>
+
         {% include "ksp_login/parts/login_box.html" %}
+
         <ul class="nav navbar-nav navbar-right">
+
             <li id="l-menu-about-item" class="dropdown">
+
                 <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-question-sign"></span> O Liahni
+
+                    <span class="glyphicon glyphicon-question-sign"></span>
+                    O Liahni
                     <span class="caret"></span>
+
                 </a>
+
                 <ul class="dropdown-menu">
+
                     <li><a href="{% url 'about:about' %}">O Liahni</a></li>
+
                     <li><a href="{% url 'about:contact' %}">Kontakt</a></li>
+
                     <li><a href="{% url 'about:terms' %}">Podmienky používania</a></li>
+
                 </ul>
+
             </li>
+
             <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
         </ul>
 
     </div><!-- /.navbar-collapse -->
+
   </div>
+
 </nav>
