@@ -260,6 +260,11 @@ input[type="text"], input[type="email"], input[type="password"] {
     background-color: #001142;
 }
 
+.l-padding
+{
+    padding: 3rem;
+}
+
 footer#l-main-footer
 {
     padding: 3rem;

@@ -51,25 +51,21 @@
 
         <ul class="nav navbar-nav navbar-right">
 
-            <li id="l-menu-about-item" class="dropdown">
+            <li>
 
-                <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">
-
-                    <span class="glyphicon glyphicon-question-sign"></span>
-                    O Liahni
-                    <span class="caret"></span>
-
+                <a href="{% url 'about:about'%}">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                    O Liahni &amp; Kontakt
                 </a>
 
-                <ul class="dropdown-menu">
+            </li>
 
-                    <li><a href="{% url 'about:about' %}">O Liahni</a></li>
+            <li>
 
-                    <li><a href="{% url 'about:contact' %}">Kontakt</a></li>
-
-                    <li><a href="{% url 'about:terms' %}">Podmienky používania</a></li>
-
-                </ul>
+                <a href="{% url 'about:terms' %}">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                    Podmienky používania
+                </a>
 
             </li>
 
