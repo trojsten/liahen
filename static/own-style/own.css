@@ -126,6 +126,24 @@ input[type="text"], input[type="email"], input[type="password"] {
     border-bottom: 2px solid black;
 }
 
+#l-intro-slider
+{
+    background-color: #001142;
+    color: white;
+    padding: 3rem 0;
+}
+
+#l-intro-slider h1
+{
+    color: white;
+}
+
+#l-intro-slider .l-slider ul li
+{
+    margin-bottom: 4rem;
+}
+
+
 .l-slider.l-controls
 {
     clear: both;
@@ -240,6 +258,11 @@ input[type="text"], input[type="email"], input[type="password"] {
 .dropdown-menu
 {
     background-color: #001142;
+}
+
+footer#l-main-footer
+{
+    padding: 3rem;
 }
 
 @media screen and (max-width: 768px)
