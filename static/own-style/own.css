@@ -91,6 +91,7 @@ input[type="text"], input[type="email"], input[type="password"] {
     padding: 0rem 3rem;
     background-size: cover;
     font-family: 'Source Sans Pro';
+    width: 100%;
 }
 
 #l-intro-whatis h2

@@ -5,13 +5,14 @@
 
 </div> <!-- TODO later dat vsade container-fluid a tato grcka tu uz nebude musiet byt -->
 
-    <div class="container-fluid l-inverse-text" id="l-intro-whatis">
+<div id="l-intro-whatis">
+
+    <div class="container l-inverse-text">
 
       <div class = "row l-top-gap l-bottom-gap">
 
-          <div class = "col-lg-1"> </div>
 
-          <div class = "col-lg-5 col-md-6 l-bottom-gap">
+          <div class = "col-md-7 l-bottom-gap">
 
               <h2>Programátorská liaheň</h2>
 
@@ -21,9 +22,7 @@
 
           </div>
 
-          <div class = "col-lg-2"> </div>
-
-          <div class = "col-lg-4 col-md-6">
+          <div class = "col-lg-4 col-lg-offset-1 col-md-6">
 
               <a class = "l-button" href = "{% url 'account_register' %}">
                   Zaregistruj sa
@@ -32,14 +31,15 @@
 
           </div>
 
-          <div class = "col-lg-2 col-md-1"> </div>
-
       </div>
 
     </div>
 
-    {% include 'about/highlights.html' %}
+</div>
 
-    {% include 'about/slider.html' %}
+
+{% include 'about/highlights.html' %}
+
+{% include 'about/slider.html' %}
 
 {% endblock content %}
