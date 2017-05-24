@@ -1,4 +1,6 @@
 # -*- coding: utf8 -*-
+from __future__ import unicode_literals
+
 from django.db import models
 from django.conf import settings
 
@@ -19,7 +21,7 @@ class Submit(models.Model):
     }
 
     LANGUAGE_CHOICES = (
-        (".", u"""Zisti podľa prípony"""),
+        (".", "Zisti podľa prípony"),
         (".cc", "C++ (.cpp/.cc)"),
         (".pas", "Pascal (.pas/.dpr)"),
         (".c", "C (.c)"),
@@ -76,5 +78,5 @@ class Submit(models.Model):
     )
 
     def __unicode__(self):
-        return u'%s | %s | %s | %s' % (
+        return '%s | %s | %s | %s' % (
             self.user, self.task, self.timestamp.strftime('%d-%m-%Y %H:%M:%S'), self.message)
