@@ -7,6 +7,7 @@ Markdown==2.6.7
 oauth2==1.9.0.post1
 oauthlib==2.0.1
 psycopg2==2.6.2
+pygraphviz==1.2
 PyJWT==1.4.2
 python-openid==2.2.5
 requests==2.12.5

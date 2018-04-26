@@ -6,5 +6,8 @@
 {% block content %}
     {% if not task_set.public %}<div class = "non-public">{% endif %}
         {% include 'tasks/task_set_header.html' %}
+        <div class="row">
+            {{ graph|safe }}
+        </div>
     {% if not task_set.public %}</div>{% endif %}
 {% endblock content %}
