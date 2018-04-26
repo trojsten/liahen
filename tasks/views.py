@@ -1,5 +1,7 @@
 from datetime import datetime
 
+import pygraphviz as pgv
+
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404
@@ -115,8 +117,85 @@ def task_set_graph_view(request, pk=False):  # zobrazenie sady ako graf
         else:
             invis_tasks.append(task)
 
+    #nakrmime graf datami
+    G = pgv.AGraph(directed=True)
+    G.node_attr['color'] = '#dddddd'
+    G.node_attr['style'] = 'filled'
+    G.node_attr['fontcolor'] = '#ffffff'
+    G.node_attr['fontname'] = 'Helvetica, Arial, sans-serif'
+    G.graph_attr['bgcolor'] = 'transparent'
+    G.edge_attr['color'] = '#555555'
+    G.edge_attr['arrowhead'] = 'open'
+
+    RED = '#C71C22'
+    BLUE_L = '#2FA4E7'
+    BLUE_D = '#033C73'
+    GREEN = '#73A839'
+    ORANGE = '#DD5600'
+
+    for task in solved_tasks:
+        G.add_node(task.id,
+                   fillcolor = (GREEN if (task.type == Task.SUBMIT) else BLUE_D),
+                   shape = ('ellipse' if (task.type == Task.SUBMIT) else 'box'),
+                   tooltip = task.title,
+                   URL = reverse('tasks:task', args=(task.id,)),
+                   fontcolor = '#eeeeee'
+                   )
+
+    for task in actual_tasks:
+        G.add_node(task.id,
+                   fillcolor = (RED if (task.type == Task.SUBMIT) else BLUE_L),
+                   shape = ('ellipse' if (task.type == Task.SUBMIT) else 'box'),
+                   tooltip = task.title,
+                   URL = reverse('tasks:task', args=(task.id,)),
+                   fontcolor = '#ffffff'
+                   )
+
+    for task in invis_tasks:
+        #admin si vie pozerat aj invis ulohy
+        if request.user.is_active and request.user.is_staff:
+            G.add_node(task.id,
+                    fillcolor = '#ffffff',
+                    shape = ('ellipse' if (task.type == Task.SUBMIT) else 'box'),
+                    tooltip = task.title,
+                    URL = reverse('tasks:task', args=(task.id,)),
+                    fontcolor = '#000000'
+                    )
+        else:
+            G.add_node(task.id,
+                    label = '',
+                    fillcolor = '#FFFFFF',
+                    shape = ('ellipse' if (task.type == Task.SUBMIT) else 'box'),
+                    tooltip = ' ',
+                    fontcolor = 'black',
+                    style = 'dashed',
+                    color = '#333333'
+                    )
+
+    #najprv trebalo pridat vsetky vrcholy, aby sa im nastavil styl, hrany az potom
+    for task in solved_tasks:
+        edges = task.prereqs.all()
+        for edge in edges:
+            G.add_edge(edge.id, task.id, style='solid')
+
+    for task in actual_tasks:
+        edges = task.prereqs.all()
+        for edge in edges:
+            G.add_edge(edge.id, task.id, style='solid')
+
+    for task in invis_tasks:
+        edges = task.prereqs.all()
+        for edge in edges:
+            G.add_edge(edge.id, task.id, style='dashed')
+
+    G.layout()
+
+    #vymazeme hlavicky, lebo neincludujeme svg object, ale rovno ho kreslime; inak by sme neboli html valid
+    graph = '\n'.join(G.draw(format='svg').split('\n')[3:])
+
     return render(request, 'tasks/task_set_graph.html',
                   {
+                      'graph':graph, #data pre graf (svg)
                       'active_app': 'tasks',  # hlavne menu
                       'task_set': task_set,  # aktualna sada
                       'sets': sets,  # vsetky sady
